@@ -1,0 +1,316 @@
+@charset "UTF-8";
+/*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Oxygen:wght@700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+/* подключение_нулевых стилей */
+/* Шрифты */
+@font-face {
+  font-family: "Akronim";
+  src: url(../fonts/Akronim/Akronim-Regular.ttf);
+}
+/* Шрифты_конец */
+/* Шаблоны */
+body {
+  height: 10000px;
+  background-color: #333;
+  min-width: 280px;
+  font-family: "Lexend Mega", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html {
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: calc(1340px + 40px);
+}
+
+.wrapper {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.greeenco {
+  position: relative;
+  min-height: 100vh;
+  background-color: #F4F4F4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.greeenco._active .greeenco__title {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.greeenco._active .greeenco__plant {
+  /* transform: translateX(-50%);*/
+  bottom: 0%;
+}
+
+.greeenco__container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.greeenco__header {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: calc(20px + (52 * ((100vw - 280px) / 1640)));
+  padding-bottom: calc(20px + (52 * ((100vw - 280px) / 1640)));
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 70px;
+}
+@media (min-width: 1340px) {
+  .greeenco__header {
+    min-height: calc(50px + (20 * ((100vw - 280px) / 1640)));
+  }
+}
+
+.menu {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.menu__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu__burger {
+  cursor: pointer;
+  position: relative;
+  width: 38px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  left: -10%;
+  -webkit-transition: 0.4s 0.6s;
+  transition: 0.4s 0.6s;
+  opacity: 0;
+}
+
+.greeenco._active .menu__burger {
+  opacity: 1;
+  left: 0%;
+}
+
+.menu__burger span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #B7BBB2;
+  margin: 2.5px;
+}
+
+.menu__home {
+  cursor: pointer;
+  right: -20%;
+  position: relative;
+  -webkit-transition: 0.4s 0.6s;
+  transition: 0.4s 0.6s;
+  opacity: 0;
+}
+
+.greeenco._active .menu__home {
+  opacity: 1;
+  right: 0%;
+}
+
+.greeenco__title {
+  text-transform: uppercase;
+  color: #7A797A;
+  font-family: "Baloo 2", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: calc(50px + (210 * ((100vw - 280px) / 1640)));
+  position: relative;
+  text-align: center;
+  line-height: 1;
+  opacity: 0.5;
+  z-index: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.5s 0.1s;
+  transition: 0.5s 0.1s;
+}
+
+.greeenco__title::before {
+  content: "Nature’s souvenir store";
+  position: absolute;
+  top: 75%;
+  opacity: 0;
+  -webkit-transform: translate();
+          transform: translate();
+   font-size : calc(30px + (18 * ((100vw - 280px) / 1640)));
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: 400;
+  -webkit-transition: 0.4s 0.7s;
+  transition: 0.4s 0.7s;
+  font-family: "Akronim", serif;
+}
+
+.greeenco._active .greeenco__title::before {
+  top: 93%;
+  opacity: 1;
+}
+
+@media (max-width: 576px) {
+  .greeenco__title {
+    margin-bottom: calc(10px + (10 * ((100vw - 280px) / 1640)));
+  }
+}
+.greeenco_sub-title {
+  /* @include adapt-value(" font-size ", 48, 30, 0);
+  top        : -50px;
+  position   : relative;
+  line-height: 0;
+  transition : 0.7s 0.3s;
+  z-index    : 0;
+  opacity    : 0;
+  font-family: 'Akronim', serif; */
+}
+
+@media (min-width: 1341px) {
+  .greeenco_sub-title {
+    position: relative;
+     left : calc(530px + (-520 * ((100vw - 280px) / 1640)));
+  }
+}
+@media (max-width: 1340px) {
+  .greeenco_sub-title {
+    text-align: center;
+  }
+}
+.greeenco__plant {
+  -webkit-transition: 0.7s 0.3s;
+  transition: 0.7s 0.3s;
+  position: absolute;
+  bottom: -100%;
+  right: 29%;
+  width: 29.9%;
+  padding-bottom: 38.5%;
+}
+
+.greeenco__plant img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
