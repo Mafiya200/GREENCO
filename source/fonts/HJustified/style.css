@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'H Justified';
+    src: local('H Justified Regular'), local('H-Justified-Regular'),
+        url('HJustified-Regular.woff2') format('woff2'),
+        url('HJustified-Regular.woff') format('woff'),
+        url('HJustified-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

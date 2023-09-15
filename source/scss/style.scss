@@ -2,10 +2,14 @@
 /* подключение_нулевых стилей */
 
 /* Шрифты */
+
 @font-face {
     font-family: 'Akronim';
     src        : url(../fonts/Akronim/Akronim-Regular.ttf);
 }
+
+@import url(https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,regular,500,600,700,800&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap);
 
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Oxygen:wght@700&display=swap');
 /* Шрифты_конец */
@@ -100,6 +104,14 @@ html {
 
 }
 
+/* @media (max-width:1800px) {
+    .potted-item__swiper.greeenco__container {
+width: 100%;
+
+    }
+ 
+} */
+
 .greeenco__body {}
 
 .greeenco__header {
@@ -159,16 +171,16 @@ html {
 }
 
 .menu__home {
-    cursor: pointer;
-    right: -20%;
-    position: relative;
+    cursor    : pointer;
+    right     : -20%;
+    position  : relative;
     transition: 0.4s 0.6s;
-    opacity: 0;
+    opacity   : 0;
 }
 
 .greeenco._active .menu__home {
     opacity: 1;
-    right   : 0%;
+    right  : 0%;
 }
 
 .greeenco__title {
@@ -263,4 +275,394 @@ html {
     width : 100%;
     height: 100%;
 
+}
+
+////////////////////////////////////////////
+
+.page {
+    flex: 1 1 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.potted-dop {
+    @include adapt-value('min-height', 277, 0, 0);
+    width           : 100%;
+    position        : relative;
+    z-index         : 1;
+    background-color: #F4F4F4;
+
+}
+
+@media (max-width:767px) {
+    .potted-dop {
+        min-height: 40px;
+    }
+}
+
+
+.potted {
+    @include adapt-value('padding-top', 141, 50, 0);
+    position        : relative;
+    z-index         : 1;
+    background-color: #4A4A4A;
+}
+
+.potted__container {
+    position: relative;
+}
+
+
+.potted__body {}
+
+.potted__items {}
+
+@media (min-width:577px) {
+    .potted__items {
+        display   : flex;
+        min-height: 0px;
+        @include adapt-value('margin-bottom', -285, 0, 0);
+    }
+}
+
+
+.potted__item {
+    flex: 0 0 47.76119%;
+}
+
+
+
+.potted__item_content {
+    /* align-self: center; */
+    flex-grow: 1;
+    @include adapt-value('padding-top', 53, 25, 0);
+    @include adapt-value('padding-bottom', 407, 0, 0);
+    @include adapt-value('padding-left', 138, 10, 0);
+    @include adapt-value('padding-right', 125, 10, 0);
+
+}
+
+.potted__item_button {
+    @include adapt-value('padding-top', 124, 25, 0);  
+}
+@media (max-width:576px) {
+    .potted__item_button {
+        @include adapt-value('padding-top', 53, 20, 0);
+        @include adapt-value('padding-bottom', 53, 20, 0);
+        @include adapt-value('padding-left', 138, 10, 0);
+        @include adapt-value('padding-right', 125, 10, 0);
+    
+    }  
+}
+
+
+.potted__item_button .link {
+
+
+
+    
+
+
+    text-align: center;
+
+    position: relative;
+}
+
+.potted__item_button .link span {
+    display          : inline-block;
+    background-image : url("../../img/Elements/Arrow.png");
+    background-repeat: no-repeat;
+    position         : absolute;
+    top              : 50%;
+
+    background-position: center;
+    @include adapt-value("right", -115, -50, 0);
+    width: 70px;
+
+    height   : 100%;
+    transform: translate(0, -50%);
+
+}
+
+.potted__item_button .link span::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: -100%;
+    top: 0;
+}
+
+
+
+@media (min-width:651px) and (max-width:756px) {
+    .potted__item_button .link span {  
+        background-size  : 50%;
+
+    }
+}
+@media (min-width:757px) and (max-width:1100px) {
+    .potted__item_button .link span {  
+        background-size  : 75%;
+
+    }
+}
+
+
+
+@media (max-width:650px) {
+    .potted__item_button .link span {
+        display: none;
+    }
+}
+
+
+
+@media (max-width:576px) {
+    .potted__item_button {
+        text-align: center;
+    }
+
+    .potted__item_button .link {
+        display: inline-block;
+    }
+}
+
+.potted__item_button .link a {
+    
+    border        : 3px solid #7A797A;
+    padding       : 10px;
+    display       : block;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    @include adapt-value('font-size', 36, 6, 0);
+
+    line-height: calc(65.04/36);
+    color      : #7A797A;
+}
+
+@media (max-width:576px) {
+    .potted__item_button .link a {
+        @include adapt-value('font-size', 36, 17, 0);
+        
+        
+
+    }
+}
+
+.item-potted {
+    min-width : 0;
+    min-height: 0;
+}
+
+.item-potted__body {
+    overflow: hidden;
+
+}
+
+
+.item-potted__image {
+    position      : relative;
+    z-index       : 4;
+    padding-bottom: 145.160%;
+    width         : 100%;
+}
+
+@media (max-width:576px) {
+    .item-potted__image {
+        display: none;
+    }
+}
+
+.item-potted__image img {
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+}
+
+.potted-item__swiper.swiper-container {
+
+    /*   max-width: 100%; */
+    width: 100%;
+
+}
+
+/* @media (max-width:576px) {
+    .potted-item__swiper.swiper-container {
+        width: 100%;
+
+    }
+
+} */
+
+
+
+/* @media (min-width:768px) and (max-width:900px) {
+    .potted-item__swiper.swiper-container {
+        width: 300px;
+      
+      } 
+} */
+
+.potted-item__swiper-wrapper {
+    /*  display  : flex;
+    max-width: 100%; */
+
+}
+
+.potted__item.item-potted.potted__item_content .item-potted__body .potted-item__swiper-slide.swiper-slide {
+    /* width     : 25%;*/
+    min-height: 100px;
+}
+
+.title {
+
+    font-family: "Work Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color      : white;
+    @include adapt-value(" font-size  ", 81, 25, 0);
+
+    @include adapt-value("letter-spacing", 19, 5, 0);
+
+    line-height: calc(100/81);
+    font-weight: 400;
+}
+
+.text {
+    color: white;
+    @include adapt-value(" font-size  ", 24, 14, 0);
+    line-height   : calc(35/24);
+    text-align    : justify;
+    text-transform: lowercase;
+    font-family   : 'Mukta Vaan', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin        : 31px 0;
+
+}
+
+
+
+.potted-item__swiper-scrollbar {
+    width           : 100%;
+    height          : 3px;
+    background-color: gray;
+    position        : relative;
+}
+
+.potted-item__swiper-scrollbar .page__drag-scroll {
+    position        : absolute;
+    height          : 10px;
+    cursor          : pointer;
+    top             : -100%;
+    background-color: white;
+}
+
+
+
+.potted-item__swiper-button-prev {
+    position  : absolute;
+    top       : 40%;
+    transform : translateY(-50%);
+    left      : -2.5%;
+    height    : 66.19px;
+    width     : 32px;
+    cursor    : pointer;
+    transition: 0.3s;
+}
+
+.potted-item__swiper-button-next {
+    transition: 0.3s;
+    cursor    : pointer;
+    position  : absolute;
+    top       : 40%;
+    transform : translateY(-50%);
+    right     : 2%;
+    height    : 66.19px;
+    width     : 32px;
+}
+
+@media (max-width:1480px) {
+    .potted-item__swiper-button-next {
+        display: none;
+    }
+
+    .potted-item__swiper-button-prev {
+
+        display: none;
+    }
+
+}
+
+.potted-item__swiper-button-next::before,
+.potted-item__swiper-button-next::after,
+.potted-item__swiper-button-prev::before,
+.potted-item__swiper-button-prev::after {
+    content         : "";
+    transition      : inherit;
+    height          : 30px;
+    width           : 5px;
+    background-color: white;
+}
+
+.potted-item__swiper-button-next::after {
+    position : absolute;
+    top      : 64%;
+    left     : 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+
+
+}
+
+.potted-item__swiper-button-next::before {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+
+    top      : 36%;
+    left     : 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+}
+
+.potted-item__swiper-button-prev::after {
+    position : absolute;
+    top      : 64%;
+    left     : 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+
+
+}
+
+.potted-item__swiper-button-prev::before {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+
+    top      : 36%;
+    left     : 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+}
+
+.swiper-button-disabled::after,
+.swiper-button-disabled::before {
+    opacity         : 0.5;
+    background-color: #b6b6b6;
 }

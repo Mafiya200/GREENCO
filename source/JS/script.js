@@ -26,13 +26,13 @@ const isMobile = {
     }
 };
 
-let num= 0;
+let num = 0;
 
 const animItems = document.querySelectorAll(`._anim-item`);
 
 if (animItems.length > 0) {
     animItemsCheck();
-    window.addEventListener(`scroll`,animItemsCheck);
+    window.addEventListener(`scroll`, animItemsCheck);
 
 
 
@@ -69,4 +69,119 @@ if (animItems.length > 0) {
         return { top: rect.top + scrollPageY, left: rect.left + scrollPageX };
     }
 }
+let word = "1 wor1ld 1";
+let wordFinish = "";
+let space = 0;
 
+if (word.length > 0) {
+
+    /* !(word[word.length - 1] === " ") */
+    if (1) {
+        dance:
+        for (let i = 0; i < word.length; i++) {
+            const letter = word[i];
+
+
+            if ((letter === " ")) {
+                if (!(i === word.length - 1)) {
+                    if (!(word[i + 1] === " ")) {
+
+                        space = i;
+
+                    }
+
+
+
+                }
+
+
+            }
+
+
+        }
+        for (let i = space; i < word.length; i++) {
+            const letter = word[i];
+            if (!(letter === " ")) {
+                wordFinish += letter;
+            }
+
+        }
+
+
+        console.log(wordFinish.length);
+        /*         console.log(wordFinish);
+         */
+    }
+    /*  else{
+         for (let i = word.length - 1; i >= 0; i--) {
+             const letter = word[i-1];
+             if(!(letter===" ")){
+                 wordFinish += letter;
+             }
+             else{
+                 break;
+             }
+ 
+         }
+         console.log(wordFinish);
+         
+     } */
+
+
+}
+
+
+window.addEventListener(`resize`, function () {
+    console.log(123);
+    mySliderText.params.observer = {
+        enabled: true,
+    };
+
+});
+
+
+let mySliderText = new Swiper(`.potted-item__swiper`, {
+
+    /* wrapperClass: `potted-item__swiper-wrapper`, */ /// переназначение класса wrapper
+    /*  slideClass: `potted-item__swiper-slide`, *//// переназначение класса slide
+
+    observer: true,//true-вкл/false-выкл обновление свайпера при изменении элементов слайдера
+
+    // обновить свайпер
+    // при изменении родительских
+    // элементов слайдера
+    observeParents: true,//true-вкл/false-выкл обновление свайпера при изменении родительских элементов слайдера
+
+    // обновить свайпер
+    // при изменении дочерних
+    // элементов слайдера
+    observeSlideChildren: true, //true-вкл/false-выкл обновление свайпера при изменении дочерних элементов слайдера
+    /* 
+        simulateTouch: false,
+        allowTouchMove: false, */
+    slidesPerView: 1,
+    effect: `fade`,
+    fadeEffect: {
+        crossFade: true,//true-вкл/false-выкл паралельной смены прозрачности
+    },
+
+    scrollbar: {
+        el: `.potted-item__swiper-scrollbar`,
+        dragClass: `page__drag-scroll`,///new меняет класс стилей на нужный
+        draggable: true,
+    },
+    spaceBetween: 10, //Пространство между слайдами отступ
+    breakpoints: {
+        320: {// ширина экрана от
+            autoHeight: true,
+        },
+        /* 576: {// ширина экрана от
+            autoHeight: false,
+        }, */
+    },
+    navigation: {
+        nextEl: `.potted-item__swiper-button-next`,
+        prevEl: `.potted-item__swiper-button-prev`,/* CSS=.swiper-button-prev/-next::after{
+            font-size:80px; color:red;} */
+    },
+});
