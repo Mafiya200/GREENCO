@@ -270,7 +270,7 @@ const windowScroll = window.innerWidth - wrapper.offsetWidth;
 menuBurger.addEventListener(`click`, function (e) {
     openBurger();
 });
-window.addEventListener(`resize`,closeBurger);
+/* window.addEventListener(`resize`,closeBurger); */
 
 
 function openBurger() {
