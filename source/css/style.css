@@ -85,10 +85,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Шрифты_конец */
 /* Шаблоны */
 body {
-  height: 10000px;
-  background-color: #333;
   min-width: 280px;
   font-family: "Lexend Mega", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body._close {
+  overflow: hidden;
 }
 
 html {
@@ -102,6 +104,7 @@ html {
 }
 
 .wrapper {
+  width: 100%;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -298,12 +301,14 @@ width: 100%;
 }
 
 @media (min-width: 1341px) {
+  /* (min-width:577px) and  */
   .greeenco_sub-title {
     position: relative;
      left : calc(530px + (-520 * ((100vw - 280px) / 1640)));
   }
 }
 @media (max-width: 1340px) {
+  /* (min-width:577px) and  */
   .greeenco_sub-title {
     text-align: center;
   }
@@ -322,6 +327,70 @@ width: 100%;
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.greeenco__menu {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100vw;
+  left: 0vw;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.greeenco__menu._active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-greenco__list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  text-align: center;
+  background-color: #3f865b;
+  padding: 25px 0;
+  min-height: 100vh;
+  -webkit-transform: translateX(-100vw);
+          transform: translateX(-100vw);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+@media (max-width: 62.5em) {
+  .menu-greenco__list {
+    width: 40%;
+  }
+}
+@media (max-width: 50.5em) {
+  .menu-greenco__list {
+    width: 50%;
+  }
+}
+.greeenco__menu._active .menu-greenco__list {
+  -webkit-transform: translateX(0vw);
+          transform: translateX(0vw);
+}
+
+.menu-greenco__list > li {
+  padding: 20px 0;
+}
+
+.menu-greenco__link {
+  color: white;
+  display: inline-block;
+  padding: 0px 20px;
+  font-size: 40px;
+  font-size: calc(18px + (22 * ((100vw - 280px) / 1640)));
+  text-transform: uppercase;
+  font-family: "Baloo 2", "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .page {
@@ -393,8 +462,23 @@ width: 100%;
   }
 }
 .potted__item_button .link {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   text-align: center;
+  -webkit-box-shadow: 0px 0px 0px 0px gray;
+          box-shadow: 0px 0px 0px 0px gray;
   position: relative;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  -webkit-box-shadow: 0px 10px 10px 0px gray;
+          box-shadow: 0px 10px 10px 0px gray;
+}
+
+.potted__item_button .link:active {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+  -webkit-box-shadow: 0px 0px 0px 0px gray;
+          box-shadow: 0px 0px 0px 0px gray;
 }
 
 .potted__item_button .link span {
@@ -629,7 +713,7 @@ width: 100%;
 .title {
   font-family: "Work Sans", Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: white;
-   font-size  : calc(25px + (56 * ((100vw - 280px) / 1640)));
+   font-size  : calc(20px + (61 * ((100vw - 280px) / 1640)));
   letter-spacing: calc(5px + (14 * ((100vw - 280px) / 1640)));
   -webkit-transform: scale(0.5) translate(0, -100%);
           transform: scale(0.5) translate(0, -100%);
@@ -730,6 +814,15 @@ width: 100%;
   background-color: white;
 }
 
+@media (min-width: 125em) {
+  .potted-item__swiper-button-next::before,
+.potted-item__swiper-button-next::after,
+.potted-item__swiper-button-prev::before,
+.potted-item__swiper-button-prev::after {
+    height: 30px;
+    width: 6px;
+  }
+}
 .potted-item__swiper-button-next::after {
   position: absolute;
   top: 64%;
@@ -768,8 +861,8 @@ width: 100%;
 
 .swiper-button-disabled::after,
 .swiper-button-disabled::before {
-  opacity: 0.5;
-  background-color: #b6b6b6;
+  /* opacity         : 0.5; */
+  background-color: #797878;
 }
 
 .sotial-sites__item i {
@@ -804,7 +897,7 @@ width: 100%;
   -webkit-transform: translateX(-50vw);
           transform: translateX(-50vw);
   /*     transition: left 1.0s;
-   */
+  */
   padding-top: calc(14px + (-3.5 * ((100vw - 280px) / 1640)));
   padding-bottom: calc(14px + (-3.5 * ((100vw - 280px) / 1640)));
 }
@@ -836,4 +929,21 @@ width: 100%;
 .sotial-sites__item a {
   font-size: calc(24px + (-6 * ((100vw - 280px) / 1640)));
   color: #dadada;
+}
+
+.fa-brands {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.fa-brands.fa-instagram:hover {
+  color: #e10092;
+}
+
+.fa-brands.fa-facebook-f:hover {
+  color: #3b5998;
+}
+
+.fa-brands.fa-twitter:hover {
+  color: #1D9BF0;
 }

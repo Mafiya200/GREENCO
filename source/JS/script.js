@@ -108,7 +108,7 @@ if (word.length > 0) {
         }
 
 
-        
+
     }
     /*  else{
          for (let i = word.length - 1; i >= 0; i--) {
@@ -189,7 +189,7 @@ let mySliderText = new Swiper(`.potted-item__swiper`, {
 
 
 let mySliderImage = new Swiper(`.swiper__images`, {
- /* wrapperClass: `potted-item__swiper-wrapper`, */ /// переназначение класса wrapper
+    /* wrapperClass: `potted-item__swiper-wrapper`, */ /// переназначение класса wrapper
     /*  slideClass: `potted-item__swiper-slide`, *//// переназначение класса slide
 
     observer: true,//true-вкл/false-выкл обновление свайпера при изменении элементов слайдера
@@ -206,7 +206,7 @@ let mySliderImage = new Swiper(`.swiper__images`, {
     simulateTouch: false,//true-вкл/false-выкл возможности перетаскивание на ПК(ХВАТЬ И ДВИГАТЬ)
     allowTouchMove: false,//true-вкл/false-выкл возможности перетаскивани для всех устройств (ХВАТЬ И ДВИГАТЬ)
     grabCursor: false,
-    loop:true,
+    loop: true,
     effect: `fade`,
 });
 
@@ -220,38 +220,78 @@ mySliderText.controller.control = mySliderImage;
 const lazyImages = document.querySelectorAll(`img[data-src], source[data-srcset]`);
 let imagePositions = [];
 const windowHeight = document.documentElement.clientHeight;
-window.addEventListener(`scroll`,function(){
-    if(document.querySelectorAll(`[data-src], [data-srcset]`).length > 0){
+window.addEventListener(`scroll`, function () {
+    if (document.querySelectorAll(`[data-src], [data-srcset]`).length > 0) {
         checkImage();
 
     }
 });
 
 
-if(lazyImages.length>0){
+if (lazyImages.length > 0) {
     lazyImages.forEach(item => {
-        if(item.dataset.src||item.dataset.srcset){
+        if (item.dataset.src || item.dataset.srcset) {
             imagePositions.push(`${scrollY + item.getBoundingClientRect().top}`);
             checkImage();
         }
     });
 }
 
-function checkImage(){
-   let imgIndex = imagePositions.findIndex(item => {
+function checkImage() {
+    let imgIndex = imagePositions.findIndex(item => {
         return pageYOffset > (item - windowHeight);
-    }); 
+    });
 
-    if(imgIndex>=0){
-        if(lazyImages[imgIndex].dataset.src){
+    if (imgIndex >= 0) {
+        if (lazyImages[imgIndex].dataset.src) {
             lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
             lazyImages[imgIndex].removeAttribute(`data-src`);
         }
-        else if(lazyImages[imgIndex].dataset.srcset){
+        else if (lazyImages[imgIndex].dataset.srcset) {
             lazyImages[imgIndex].srcset = lazyImages[imgIndex].dataset.srcset;
             lazyImages[imgIndex].removeAttribute(`data-srcset`);
         }
-       delete imagePositions[imgIndex];
+        delete imagePositions[imgIndex];
     }
 }
 
+
+
+
+
+///////burger
+
+const menuBurger = document.querySelector(`.menu__burger`);
+const body = document.querySelector(`body`);
+const greeencoMenu = document.querySelector(`.greeenco__menu`);
+const wrapper = document.querySelector(`.wrapper`);
+const windowScroll = window.innerWidth - wrapper.offsetWidth;
+
+menuBurger.addEventListener(`click`, function (e) {
+    openBurger();
+});
+window.addEventListener(`resize`,closeBurger);
+
+
+function openBurger() {
+    greeencoMenu.classList.toggle(`_active`);
+    menuBurger.classList.toggle(`_active`);
+    body.classList.toggle(`_close`);
+    greeencoMenu.addEventListener(`click`, function (e) {
+
+        if (!(e.target.closest(`.menu-greenco__list`))) {
+            closeBurger();
+        }
+    });
+    console.log(window.innerWidth);
+    body.style.paddingRight = `${windowScroll}px`;
+
+}
+function closeBurger() {
+    greeencoMenu.classList.remove(`_active`);
+    menuBurger.classList.remove(`_active`);
+    body.classList.remove(`_close`);
+
+    body.style.paddingRight = `0px`;
+
+}
