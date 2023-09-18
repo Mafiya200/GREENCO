@@ -319,13 +319,13 @@ width: 100%;
 
 @media (max-width:62.5em) {
     .menu-greenco__list {
-        width: 35%;
+        width: 40%;
     }
 }
 
 @media (max-width:50.5em) {
     .menu-greenco__list {
-        width: 40%;
+        width: 45%;
     }
 }
 
@@ -343,7 +343,7 @@ width: 100%;
     display  : inline-block;
     padding  : 0px 20px;
     font-size: 40px;
-    @include adapt-value('font-size', 40, 18, 0);
+    @include adapt-value('font-size', 40, 16, 0);
     text-transform: uppercase;
     font-family   : "Baloo 2", "Helvetica Neue", Helvetica, sans-serif;
 
