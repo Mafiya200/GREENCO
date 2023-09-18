@@ -108,9 +108,7 @@ if (word.length > 0) {
         }
 
 
-        console.log(wordFinish.length);
-        /*         console.log(wordFinish);
-         */
+        
     }
     /*  else{
          for (let i = word.length - 1; i >= 0; i--) {
@@ -123,7 +121,6 @@ if (word.length > 0) {
              }
  
          }
-         console.log(wordFinish);
          
      } */
 
@@ -132,7 +129,6 @@ if (word.length > 0) {
 
 
 window.addEventListener(`resize`, function () {
-    console.log(123);
     mySliderText.params.observer = {
         enabled: true,
     };
@@ -185,3 +181,77 @@ let mySliderText = new Swiper(`.potted-item__swiper`, {
             font-size:80px; color:red;} */
     },
 });
+
+
+
+
+
+
+
+let mySliderImage = new Swiper(`.swiper__images`, {
+ /* wrapperClass: `potted-item__swiper-wrapper`, */ /// переназначение класса wrapper
+    /*  slideClass: `potted-item__swiper-slide`, *//// переназначение класса slide
+
+    observer: true,//true-вкл/false-выкл обновление свайпера при изменении элементов слайдера
+
+    // обновить свайпер
+    // при изменении родительских
+    // элементов слайдера
+    observeParents: true,//true-вкл/false-выкл обновление свайпера при изменении родительских элементов слайдера
+
+    // обновить свайпер
+    // при изменении дочерних
+    // элементов слайдера
+    observeSlideChildren: true, //true-вкл/false-выкл обновление свайпера при изменении дочерних элементов слайдера
+    simulateTouch: false,//true-вкл/false-выкл возможности перетаскивание на ПК(ХВАТЬ И ДВИГАТЬ)
+    allowTouchMove: false,//true-вкл/false-выкл возможности перетаскивани для всех устройств (ХВАТЬ И ДВИГАТЬ)
+    grabCursor: false,
+    loop:true,
+    effect: `fade`,
+});
+
+mySliderImage.controller.control = mySliderText;
+mySliderText.controller.control = mySliderImage;
+
+
+
+
+
+const lazyImages = document.querySelectorAll(`img[data-src], source[data-srcset]`);
+let imagePositions = [];
+const windowHeight = document.documentElement.clientHeight;
+window.addEventListener(`scroll`,function(){
+    if(document.querySelectorAll(`[data-src], [data-srcset]`).length > 0){
+        checkImage();
+
+    }
+});
+
+
+if(lazyImages.length>0){
+    lazyImages.forEach(item => {
+        if(item.dataset.src||item.dataset.srcset){
+            imagePositions.push(`${scrollY + item.getBoundingClientRect().top}`);
+            checkImage();
+        }
+    });
+}
+
+function checkImage(){
+   let imgIndex = imagePositions.findIndex(item => {
+        return pageYOffset > (item - windowHeight);
+    }); 
+
+    if(imgIndex>=0){
+        if(lazyImages[imgIndex].dataset.src){
+            lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.src;
+            lazyImages[imgIndex].removeAttribute(`data-src`);
+        }
+        else if(lazyImages[imgIndex].dataset.srcset){
+            lazyImages[imgIndex].srcset = lazyImages[imgIndex].dataset.srcset;
+            lazyImages[imgIndex].removeAttribute(`data-srcset`);
+        }
+       delete imagePositions[imgIndex];
+    }
+}
+

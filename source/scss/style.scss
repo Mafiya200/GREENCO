@@ -357,25 +357,21 @@ width: 100%;
 }
 
 .potted__item_button {
-    @include adapt-value('padding-top', 124, 25, 0);  
+    @include adapt-value('padding-top', 124, 25, 0);
 }
+
 @media (max-width:576px) {
     .potted__item_button {
         @include adapt-value('padding-top', 53, 20, 0);
         @include adapt-value('padding-bottom', 53, 20, 0);
         @include adapt-value('padding-left', 138, 10, 0);
         @include adapt-value('padding-right', 125, 10, 0);
-    
-    }  
+
+    }
 }
 
 
 .potted__item_button .link {
-
-
-
-    
-
 
     text-align: center;
 
@@ -383,13 +379,12 @@ width: 100%;
 }
 
 .potted__item_button .link span {
-    display          : inline-block;
-    background-image : url("../../img/Elements/Arrow.png");
-    background-repeat: no-repeat;
-    position         : absolute;
-    top              : 50%;
+    transition: 0.5s;
+    display   : inline-block;
 
-    background-position: center;
+    position: absolute;
+    top     : 50%;
+
     @include adapt-value("right", -115, -50, 0);
     width: 70px;
 
@@ -399,32 +394,136 @@ width: 100%;
 }
 
 .potted__item_button .link span::before {
-    content: "";
+    content : "";
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: -100%;
-    top: 0;
+    height  : 100%;
+    width   : 100%;
+    left    : -100%;
+    top     : 0;
+}
+
+.potted__item_button .link span::after {
+    content            : "";
+    width              : 100%;
+    position           : absolute;
+    top                : 0;
+    left               : 0;
+    height             : 100%;
+    background-image   : url("../../img/Elements/Arrow.png");
+    background-size    : 100%;
+    transform          : translateX(0%);
+    transition         : 0.5s;
+    background-repeat  : no-repeat;
+    background-position: center;
+
+
+
 }
 
 
 
-@media (min-width:651px) and (max-width:756px) {
-    .potted__item_button .link span {  
-        background-size  : 50%;
+
+@keyframes leftRight {
+
+    15% {
+        transform: translateX(-100%);
+
+
+
+
+    }
+
+    25% {
+        transform: translateX(0%);
+
+
+
+
+    }
+
+    35% {
+        transform: translateX(-100%);
+
+
+
+
+    }
+
+    45% {
+        transform: translateX(0%);
+
 
     }
 }
+
+@keyframes leftRightMini {
+
+    15% {
+        transform: translateX(-25%);
+
+
+
+
+    }
+
+    25% {
+        transform: translateX(0%);
+
+
+
+
+    }
+
+    35% {
+        transform: translateX(-25%);
+
+
+
+
+    }
+
+    45% {
+        transform: translateX(0%);
+
+
+    }
+}
+
+@media (min-width:769px) {
+    .potted__item_button .link:hover span::after {
+        animation: leftRight 5s infinite linear;
+    }
+}
+
+@media (max-width:768px) {
+    .potted__item_button .link:hover span::after {
+        animation: leftRightMini 5s infinite linear;
+    }
+}
+
+
+
+
+
+
+
+@media (min-width:577px) and (max-width:756px) {
+    .potted__item_button .link span::after {
+        background-size: 50%;
+
+    }
+}
+
 @media (min-width:757px) and (max-width:1100px) {
-    .potted__item_button .link span {  
-        background-size  : 75%;
+    .potted__item_button .link span::after {
+        background-size: 75%;
 
     }
 }
 
 
 
-@media (max-width:650px) {
+@media (max-width:576px) {
     .potted__item_button .link span {
         display: none;
     }
@@ -443,7 +542,7 @@ width: 100%;
 }
 
 .potted__item_button .link a {
-    
+
     border        : 3px solid #7A797A;
     padding       : 10px;
     display       : block;
@@ -455,11 +554,15 @@ width: 100%;
     color      : #7A797A;
 }
 
+
+
+
+
 @media (max-width:576px) {
     .potted__item_button .link a {
         @include adapt-value('font-size', 36, 17, 0);
-        
-        
+
+
 
     }
 }
@@ -474,6 +577,10 @@ width: 100%;
 
 }
 
+.swiper__images {
+    position: relative;
+    z-index : 3;
+}
 
 .item-potted__image {
     position      : relative;
@@ -500,7 +607,8 @@ width: 100%;
 .potted-item__swiper.swiper-container {
 
     /*   max-width: 100%; */
-    width: 100%;
+    padding-bottom: 5px;
+    width         : 100%;
 
 }
 
@@ -539,10 +647,20 @@ width: 100%;
     @include adapt-value(" font-size  ", 81, 25, 0);
 
     @include adapt-value("letter-spacing", 19, 5, 0);
-
+    transform  : scale(0.5) translate(0, -100%);
+    position   : relative;
+    transition : 0.5s;
+    opacity    : 0.0;
     line-height: calc(100/81);
     font-weight: 400;
 }
+
+.potted__item_content._active .title {
+    transform: translate(0, -0%) scale(1);
+    opacity  : 1;
+}
+
+
 
 .text {
     color: white;
@@ -552,9 +670,15 @@ width: 100%;
     text-transform: lowercase;
     font-family   : 'Mukta Vaan', Arial, "Helvetica Neue", Helvetica, sans-serif;
     margin        : 31px 0;
-
+    transform     : translate(100%, 0%);
+    opacity       : 0;
+    transition    : 0.4s;
 }
 
+.potted__item_content._active .text {
+    transform: translate(0, -0%);
+    opacity  : 1;
+}
 
 
 .potted-item__swiper-scrollbar {
@@ -665,4 +789,67 @@ width: 100%;
 .swiper-button-disabled::before {
     opacity         : 0.5;
     background-color: #b6b6b6;
+}
+
+.sotial-sites__item i {
+    color: red;
+}
+
+.sotial-sites__item i::before {
+    color: red;
+}
+
+.sotial-sites {
+    position : absolute;
+    left     : 2%;
+    top      : 35%;
+    transform: translateY(-50%);
+    z-index  : 1;
+}
+
+@media (max-width:99.9375em) {
+    .sotial-sites {
+        display: none;
+    }
+}
+
+.sotial-sites__body {}
+
+.sotial-sites__items {
+    @include adapt-value('margin-top',-10.5,-14,0);
+    @include adapt-value('margin-bottom',-10.5,-14,0);
+
+}
+
+.sotial-sites__item {
+    position: relative;
+    transform: translateX(-50vw);
+/*     transition: left 1.0s;
+ */    @include adapt-value('padding-top',10.5,14,0);
+    @include adapt-value('padding-bottom',10.5,14,0);
+}
+.sotial-sites._active .sotial-sites__item{
+    transform: translateX(0vw);
+
+
+}
+ .sotial-sites__item{
+    @for $var from 1 to 4 {
+        $delay: $var * 0.15;
+        &:nth-child(#{$var}){
+            @if $var==1{
+                transition: transform 0.8s ease 0s;
+            }
+            @else{
+                transition: transform 0.8s ease #{$delay + s};
+            }
+        }
+    }
+}
+.brands {}
+
+.sotial-sites__item a {
+
+@include adapt-value('font-size',18,24,0);
+    color    : #dadada;
 }
