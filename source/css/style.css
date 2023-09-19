@@ -404,28 +404,6 @@ width: 100%;
           flex: 1 1 100%;
 }
 
-.page::before {
-  background-color: red;
-  content: "";
-  position: absolute;
-  bottom: 0;
-  z-index: 2;
-  left: 10%;
-  height: calc(100px + (178 * ((100vw - 280px) / 1640)));
-  width: calc(152px + (151.3 * ((100vw - 280px) / 1640)));
-  background: url("../../img/Elements/plant-2.png") 0 0/100% no-repeat;
-}
-
-@media (max-width: 1200px) {
-  .page::before {
-    background: url("../../img/Elements/plant-2.png") 50% 100%/70% no-repeat;
-  }
-}
-@media (max-width: 576px) {
-  .page::before {
-    display: none;
-  }
-}
 .potted-dop {
   min-height: calc(0px + (277 * ((100vw - 280px) / 1640)));
   width: 100%;
@@ -494,10 +472,14 @@ width: 100%;
   text-align: center;
   -webkit-box-shadow: 0px 0px 10px 0px gray inset;
           box-shadow: 0px 0px 10px 0px gray inset;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 @media (min-width: 577px) {
   .potted__item_button .link {
+    -webkit-box-shadow: 0px 10px 10px 0px gray, 0px 0px 0px 0px gray inset;
+            box-shadow: 0px 10px 10px 0px gray, 0px 0px 0px 0px gray inset;
     -webkit-transition: 0.3s;
     transition: 0.3s;
     position: relative;
@@ -505,6 +487,11 @@ width: 100%;
             transform: translateY(-10px);
     -webkit-box-shadow: 0px 10px 10px 0px gray;
             box-shadow: 0px 10px 10px 0px gray;
+  }
+
+  .potted__item_button .link:hover {
+    -webkit-box-shadow: 0px 10px 10px 0px gray, 0px 0px 10px 5px gray inset;
+            box-shadow: 0px 10px 10px 0px gray, 0px 0px 10px 5px gray inset;
   }
 
   .potted__item_button .link:active {
@@ -534,6 +521,8 @@ width: 100%;
   width: 100%;
   left: -100%;
   top: 0;
+  -webkit-transition: 0.3;
+  transition: 0.3;
 }
 
 .potted__item_button .link span::after {
@@ -547,95 +536,97 @@ width: 100%;
   background-size: 100%;
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
   background-repeat: no-repeat;
   background-position: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 @-webkit-keyframes leftRight {
-  15% {
+  2% {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
   }
-  25% {
+  4% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
-  35% {
+  6% {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
   }
-  45% {
+  8% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
 }
 
 @keyframes leftRight {
-  15% {
+  2% {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
   }
-  25% {
+  4% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
-  35% {
+  6% {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
   }
-  45% {
+  8% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
 }
 @-webkit-keyframes leftRightMini {
-  15% {
+  2% {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
-  25% {
+  4% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
-  35% {
+  6% {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
-  45% {
+  8% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
 }
 @keyframes leftRightMini {
-  15% {
+  2% {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
-  25% {
+  4% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
-  35% {
+  6% {
     -webkit-transform: translateX(-25%);
             transform: translateX(-25%);
   }
-  45% {
+  8% {
     -webkit-transform: translateX(0%);
             transform: translateX(0%);
   }
 }
 @media (min-width: 769px) {
-  .potted__item_button .link:hover span::after {
-    -webkit-animation: leftRight 5s infinite linear;
-            animation: leftRight 5s infinite linear;
+  .potted__item_button .link span::after {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-animation: leftRight 35s infinite linear;
+            animation: leftRight 35s infinite linear;
   }
 }
 @media (max-width: 768px) {
-  .potted__item_button .link:hover span::after {
-    -webkit-animation: leftRightMini 5s infinite linear;
-            animation: leftRightMini 5s infinite linear;
+  .potted__item_button .link span::after {
+    -webkit-animation: leftRightMini 35s infinite linear;
+            animation: leftRightMini 35s infinite linear;
   }
 }
 @media (min-width: 577px) and (max-width: 756px) {
@@ -983,12 +974,10 @@ width: 100%;
   color: #1D9BF0;
 }
 
-.vase-pot {
-  padding-top: calc(0px + (230 * ((100vw - 280px) / 1640)));
-}
-
 .vase-pot__container {
+  padding-top: calc(0px + (230 * ((100vw - 280px) / 1640)));
   max-width: 1019px;
+  overflow: hidden;
 }
 
 @media (min-width: 1055px) {
@@ -1011,13 +1000,19 @@ width: 100%;
     grid-auto-rows: auto;
   }
 }
+.roses__content {
+  overflow: hidden;
+}
+
 @media (min-width: 577px) {
   .roses__content {
+    padding-top: 15px;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 2.1fr 10px 2.9fr;
+    -ms-grid-columns: 2.1fr calc(8px + (2 * ((100vw - 280px) / 1640))) 2.9fr;
     grid-template-columns: 2.1fr 2.9fr;
     gap: 10px;
+    gap: calc(8px + (2 * ((100vw - 280px) / 1640)));
   }
 }
 @media (max-width: 576px) {
@@ -1030,6 +1025,8 @@ width: 100%;
 }
 
 .roses__image {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   width: 100%;
   height: 100%;
   position: relative;
@@ -1037,6 +1034,14 @@ width: 100%;
   margin-bottom: calc(10px + (14 * ((100vw - 280px) / 1640)));
 }
 
+@media (min-width: 577px) {
+  .roses__image:hover {
+    -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+    -webkit-box-shadow: 0px 10px 10px 0px hsla(0deg, 0%, 20%, 0.5);
+            box-shadow: 0px 10px 10px 0px hsla(0deg, 0%, 20%, 0.5);
+  }
+}
 .roses__image img {
   max-width: 100%;
 }
@@ -1052,12 +1057,34 @@ width: 100%;
     position: absolute;
   }
 }
+.roses__item {
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  position: relative;
+}
+
+.roses__content .roses__item:nth-child(odd) {
+  -webkit-transform: translateX(-100vw);
+          transform: translateX(-100vw);
+}
+
+.roses__content .roses__item:nth-child(even) {
+  -webkit-transform: translateX(100vw);
+          transform: translateX(100vw);
+}
+
+.roses__content .roses__item:nth-child(odd)._active,
+.roses__content .roses__item:nth-child(even)._active {
+  -webkit-transform: translateX(0vw);
+          transform: translateX(0vw);
+}
+
 .roses__text {
   font-family: "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
   font-size: calc(16px + (8 * ((100vw - 280px) / 1640)));
   line-height: 1.4583333333;
-  padding-left: calc(10px + (30 * ((100vw - 280px) / 1640)));
-  padding-right: calc(10px + (30 * ((100vw - 280px) / 1640)));
+  padding-left: calc(5px + (35 * ((100vw - 280px) / 1640)));
+  padding-right: calc(5px + (35 * ((100vw - 280px) / 1640)));
 }
 
 @media (max-width: 576px) {
@@ -1071,7 +1098,13 @@ width: 100%;
       align-self: center;
   padding-top: calc(10px + (11 * ((100vw - 280px) / 1640)));
   padding-bottom: calc(10px + (11 * ((100vw - 280px) / 1640)));
-  /*  grid-area: "vases"; */
+  position: relative;
+  left: -100%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
 }
 .roses__item_rose span {
   -webkit-writing-mode: vertical-rl;
@@ -1085,6 +1118,13 @@ width: 100%;
   color: #7a797a;
 }
 
+.roses__item_rose._active {
+  left: 0;
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 @media (max-width: 576px) {
   .roses__item_rose {
     display: none;
@@ -1096,6 +1136,36 @@ width: 100%;
   padding-bottom: calc(25px + (152 * ((100vw - 280px) / 1640)));
 }
 
+.potted-dop_double::before {
+  content: "";
+  position: absolute;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  bottom: 0;
+  z-index: 2;
+  left: 5%;
+  height: calc(139px + (139 * ((100vw - 280px) / 1640)));
+  width: calc(127.88px + (175.42 * ((100vw - 280px) / 1640)));
+  background: url("../../img/Elements/plant-2.png") 0 0/100% 100% no-repeat;
+}
+
+.potted-dop_double._active::before {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+@media (max-width: 700px) {
+  .potted-dop_double::before {
+    background: url("../../img/Elements/plant-2.png") 50% 100%/90% no-repeat;
+  }
+}
+@media (max-width: 576px) {
+  .potted-dop_double::before {
+    display: none;
+  }
+}
 .potted__item_button {
   margin: 0;
   padding-top: calc(25px + (90 * ((100vw - 280px) / 1640)));

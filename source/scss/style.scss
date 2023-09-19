@@ -357,37 +357,12 @@ width: 100%;
 ////////////////////////////////////////////
 
 .page {
-position: relative;
-    flex: 1 1 100%;
-
-}
-.page::before{
-background-color: red;
-    content: "";
-    position: absolute;
-    bottom: 0;
-    z-index: 2;
-    left: 10%;
-    @include adapt-value("height",278,100,0);
-    @include adapt-value("width",303.3,152,0);
-    background: url("../../img/Elements/plant-2.png") 0 0/100% no-repeat;
+    position: relative;
+    flex    : 1 1 100%;
 
 }
 
-@media (max-width:1200px) {
-    .page::before{
-        background: url("../../img/Elements/plant-2.png") 50% 100%/70% no-repeat;
- 
-    } 
-}
-@media (max-width:576px) {
 
-
-    .page::before{
-
-        display: none;
-    } 
-}
 
 
 
@@ -487,6 +462,7 @@ background-color: red;
     text-align: center;
     box-shadow: 0px 0px 10px 0px gray inset;
 
+    transition: 0.3s;
 
 
 
@@ -495,11 +471,17 @@ background-color: red;
 
 @media (min-width:577px) {
     .potted__item_button .link {
+        box-shadow: 0px 10px 10px 0px gray, 0px 0px 0px 0px gray inset;
 
         transition: 0.3s;
         position  : relative;
         transform : translateY(-10px);
         box-shadow: 0px 10px 10px 0px gray;
+    }
+
+    .potted__item_button .link:hover {
+        box-shadow: 0px 10px 10px 0px gray, 0px 0px 10px 5px gray inset;
+
     }
 
     .potted__item_button .link:active {
@@ -526,12 +508,13 @@ background-color: red;
 }
 
 .potted__item_button .link span::before {
-    content : "";
-    position: absolute;
-    height  : 100%;
-    width   : 100%;
-    left    : -100%;
-    top     : 0;
+    content   : "";
+    position  : absolute;
+    height    : 100%;
+    width     : 100%;
+    left      : -100%;
+    top       : 0;
+    transition: 0.3;
 }
 
 .potted__item_button .link span::after {
@@ -544,12 +527,9 @@ background-color: red;
     background-image   : url("../../img/Elements/Arrow.png");
     background-size    : 100%;
     transform          : translateX(0%);
-    transition         : 0.5s;
     background-repeat  : no-repeat;
     background-position: center;
-
-
-
+    transition         : 0.3s;
 }
 
 
@@ -557,7 +537,7 @@ background-color: red;
 
 @keyframes leftRight {
 
-    15% {
+    2% {
         transform: translateX(-100%);
 
 
@@ -565,7 +545,7 @@ background-color: red;
 
     }
 
-    25% {
+    4% {
         transform: translateX(0%);
 
 
@@ -573,7 +553,7 @@ background-color: red;
 
     }
 
-    35% {
+    6% {
         transform: translateX(-100%);
 
 
@@ -581,7 +561,7 @@ background-color: red;
 
     }
 
-    45% {
+    8% {
         transform: translateX(0%);
 
 
@@ -590,7 +570,7 @@ background-color: red;
 
 @keyframes leftRightMini {
 
-    15% {
+    2% {
         transform: translateX(-25%);
 
 
@@ -598,7 +578,7 @@ background-color: red;
 
     }
 
-    25% {
+    4% {
         transform: translateX(0%);
 
 
@@ -606,7 +586,7 @@ background-color: red;
 
     }
 
-    35% {
+    6% {
         transform: translateX(-25%);
 
 
@@ -614,7 +594,7 @@ background-color: red;
 
     }
 
-    45% {
+    8% {
         transform: translateX(0%);
 
 
@@ -622,14 +602,22 @@ background-color: red;
 }
 
 @media (min-width:769px) {
-    .potted__item_button .link:hover span::after {
-        animation: leftRight 5s infinite linear;
+
+
+
+    .potted__item_button .link span::after {
+        transition: 0.3s;
+
+        animation: leftRight 35s infinite linear;
+
     }
 }
 
 @media (max-width:768px) {
-    .potted__item_button .link:hover span::after {
-        animation: leftRightMini 5s infinite linear;
+
+    .potted__item_button .link span::after {
+
+        animation: leftRightMini 35s infinite linear;
     }
 }
 
@@ -793,7 +781,6 @@ background-color: red;
     transform: translate(0, -0%) scale(1);
     opacity  : 1;
 }
-
 
 
 .text {
@@ -1026,13 +1013,15 @@ background-color: red;
 
 
 
-.vase-pot {
-    @include adapt-value('padding-top', 230, 0, 0);
-}
+.vase-pot {}
 
 
 .vase-pot__container {
+    @include adapt-value('padding-top', 230, 0, 0);
+
     max-width: 1019px;
+    overflow : hidden;
+
 }
 
 .vase-pot__body {}
@@ -1084,13 +1073,17 @@ background-color: red;
 
 
 
-.roses__content {}
+.roses__content {
+    overflow: hidden;
+}
 
 @media (min-width:577px) {
     .roses__content {
+        padding-top          : 15px;
         display              : grid;
         grid-template-columns: 2.1fr 2.9fr;
         gap                  : 10px; ///////////////////////////////////////////
+        @include adapt-value('gap', 10, 8, 0);
     }
 }
 
@@ -1108,6 +1101,8 @@ background-color: red;
 }
 
 .roses__image {
+    transition: 0.3s;
+
     width   : 100%;
     height  : 100%;
     position: relative;
@@ -1116,12 +1111,25 @@ background-color: red;
     @include adapt-value('margin-bottom', 24, 10, 0);
 }
 
+@media (min-width:577px) {
+    .roses__image:hover {
+        transform : translateY(-15px);
+        box-shadow: 0px 10px 10px 0px hsla(0, 0%, 20%, 0.5);
+    }
+
+}
+
 .roses__image img {
     max-width: 100%;
 }
 
 @media (min-width:577px) {
+
+
+
+
     .roses__image img {
+
         top       : 0;
         left      : 0;
         object-fit: cover;
@@ -1129,16 +1137,41 @@ background-color: red;
         height    : 100%;
         position  : absolute;
     }
+
+    .roses__image:hover img {}
+
+
 }
 
 .roses {}
+
+.roses__item {
+
+    transition: 0.8s;
+    position  : relative;
+}
+
+.roses__content .roses__item:nth-child(odd) {
+    transform: translateX(-100vw);
+}
+
+.roses__content .roses__item:nth-child(even) {
+    transform: translateX(100vw);
+}
+
+.roses__content .roses__item:nth-child(odd)._active,
+.roses__content .roses__item:nth-child(even)._active {
+    transform: translateX(0vw);
+}
+
+
 
 .roses__text {
     font-family: "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
     @include adapt-value('font-size', 24, 16, 0);
     line-height: calc(35/24);
-    @include adapt-value('padding-left', 40, 10, 0);
-    @include adapt-value('padding-right', 40, 10, 0);
+    @include adapt-value('padding-left', 40, 5, 0);
+    @include adapt-value('padding-right', 40, 5, 0);
 }
 
 @media (max-width:576px) {
@@ -1158,7 +1191,11 @@ background-color: red;
     align-self: center;
     @include adapt-value('padding-top', 21, 10, 0);
     @include adapt-value('padding-bottom', 21, 10, 0);
-
+    position  : relative;
+    left      : -100%;
+    transition: 0.5s;
+    opacity   : 0;
+    transform : scale(0.0);
 
 
     span {
@@ -1171,7 +1208,13 @@ background-color: red;
         color         : #7a797a;
     }
 
-    /*  grid-area: "vases"; */
+}
+
+.roses__item_rose._active {
+    left     : -0;
+    opacity  : 1;
+    transform: scale(1);
+
 }
 
 @media (max-width:576px) {
@@ -1182,12 +1225,61 @@ background-color: red;
 
 
 .potted-dop_double {
-    margin : 0;
+    margin: 0;
     @include adapt-value('min-height', 0, 0, 0);
     @include adapt-value('padding-bottom', 177, 25, 0);
 
 
 }
+
+
+
+
+
+.potted-dop_double::before {
+    content : "";
+    position: absolute;
+    transition: 0.5s;
+    transform: translateY(100%);
+
+    bottom  : 0;
+    z-index : 2;
+    left    : 5%;
+    @include adapt-value("height", 278, 139, 0);
+    @include adapt-value("width", 303.3, 127.88, 0);
+    background: url("../../img/Elements/plant-2.png") 0 0/100% 100% no-repeat;
+
+}
+
+.potted-dop_double._active::before {
+    transform: translateY(0%);
+
+}
+
+@media (max-width:700px) {
+    .potted-dop_double::before {
+
+        background: url("../../img/Elements/plant-2.png") 50% 100%/90% no-repeat;
+
+    }
+}
+
+@media (max-width:576px) {
+
+
+    .potted-dop_double::before {
+
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
 
 .potted-dop_double .potted__item_button {}
 
