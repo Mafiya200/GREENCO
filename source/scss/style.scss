@@ -8,10 +8,13 @@
     src        : url(../fonts/Akronim/Akronim-Regular.ttf);
 }
 
-@import url(https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,regular,500,600,700,800&display=swap);
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap);
-
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Oxygen:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Koulen:regular&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lexend+Mega:100,200,300,regular,500,600,700,800,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Mukta+Vaani:200,300,regular,500,600,700,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Koulen:regular&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Oxygen:wght@700&display=swap");
 /* Шрифты_конец */
 
 
@@ -77,7 +80,7 @@ html {
 }
 
 .greeenco {
-
+    overflow        : hidden;
     position        : relative;
     min-height      : 100vh;
     background-color: #F4F4F4;
@@ -339,10 +342,9 @@ width: 100%;
 }
 
 .menu-greenco__link {
-    color    : white;
-    display  : inline-block;
-    padding  : 0px 20px;
-    font-size: 40px;
+    color  : white;
+    display: inline-block;
+    padding: 0px 20px;
     @include adapt-value('font-size', 40, 16, 0);
     text-transform: uppercase;
     font-family   : "Baloo 2", "Helvetica Neue", Helvetica, sans-serif;
@@ -355,9 +357,37 @@ width: 100%;
 ////////////////////////////////////////////
 
 .page {
+position: relative;
     flex: 1 1 100%;
+
+}
+.page::before{
+background-color: red;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    left: 10%;
+    @include adapt-value("height",278,100,0);
+    @include adapt-value("width",303.3,152,0);
+    background: url("../../img/Elements/plant-2.png") 0 0/100% no-repeat;
+
 }
 
+@media (max-width:1200px) {
+    .page::before{
+        background: url("../../img/Elements/plant-2.png") 50% 100%/70% no-repeat;
+ 
+    } 
+}
+@media (max-width:576px) {
+
+
+    .page::before{
+
+        display: none;
+    } 
+}
 
 
 
@@ -379,19 +409,24 @@ width: 100%;
     width           : 100%;
     position        : relative;
     z-index         : 1;
-    background-color: #F4F4F4;
+    background-color: #Ffffff;
+    padding-bottom  : 3px;
+
+    @include adapt-value('margin-top', -285, 0, 0);
+
 
 }
 
 @media (max-width:767px) {
     .potted-dop {
         min-height: 40px;
+
     }
 }
 
 
 .potted {
-    @include adapt-value('padding-top', 141, 50, 0);
+    @include adapt-value('padding-top', 141, 10, 0);
     position        : relative;
     z-index         : 1;
     background-color: #4A4A4A;
@@ -410,7 +445,6 @@ width: 100%;
     .potted__items {
         display   : flex;
         min-height: 0px;
-        @include adapt-value('margin-bottom', -285, 0, 0);
     }
 }
 
@@ -425,14 +459,16 @@ width: 100%;
     /* align-self: center; */
     flex-grow: 1;
     @include adapt-value('padding-top', 53, 25, 0);
-    @include adapt-value('padding-bottom', 407, 0, 0);
+    @include adapt-value('padding-bottom', 404, 25, 0);
     @include adapt-value('padding-left', 138, 10, 0);
     @include adapt-value('padding-right', 125, 10, 0);
 
 }
 
 .potted__item_button {
-    @include adapt-value('padding-top', 124, 25, 0);
+    @include adapt-value('padding-top', 133, 25, 0);
+    @include adapt-value('padding-bottom', 0, 0, 0);
+
 }
 
 @media (max-width:576px) {
@@ -447,25 +483,32 @@ width: 100%;
 
 
 .potted__item_button .link {
-    transition: 0.3s;
+
     text-align: center;
-    box-shadow: 0px 0px 0px 0px gray;
-    position  : relative;
-    transform : translateY(-10px);
-    box-shadow: 0px 10px 10px 0px gray;
+    box-shadow: 0px 0px 10px 0px gray inset;
+
+
+
 
 
 }
 
-.potted__item_button .link:hover {}
+@media (min-width:577px) {
+    .potted__item_button .link {
 
-.potted__item_button .link:active {
-    transform : translateY(0px);
-    box-shadow: 0px 0px 0px 0px gray;
+        transition: 0.3s;
+        position  : relative;
+        transform : translateY(-10px);
+        box-shadow: 0px 10px 10px 0px gray;
+    }
 
-
-
+    .potted__item_button .link:active {
+        transform : translateY(0px);
+        box-shadow: 0px 0px 0px 0px gray;
+    }
 }
+
+
 
 .potted__item_button .link span {
     transition: 0.5s;
@@ -633,11 +676,13 @@ width: 100%;
 .potted__item_button .link a {
 
     border        : 3px solid #7A797A;
-    padding       : 10px;
+    font-family   : "Helvetica Neue", Helvetica, sans-serif;
     display       : block;
     text-transform: uppercase;
-    letter-spacing: 8px;
-    @include adapt-value('font-size', 36, 6, 0);
+    font-weight   : 400;
+    @include adapt-value('padding', 10, 10, 0);
+    @include adapt-value('letter-spacing', 8, 8, 0);
+    @include adapt-value('font-size', 36, 7, 0);
 
     line-height: calc(65.04/36);
     color      : #7A797A;
@@ -757,7 +802,7 @@ width: 100%;
     line-height   : calc(35/24);
     text-align    : justify;
     text-transform: lowercase;
-    font-family   : 'Mukta Vaan', Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family   : "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
     margin        : 31px 0;
     transform     : translate(100%, 0%);
     opacity       : 0;
@@ -976,4 +1021,177 @@ width: 100%;
 
 .fa-brands.fa-twitter:hover {
     color: #1D9BF0;
+}
+
+
+
+
+.vase-pot {
+    @include adapt-value('padding-top', 230, 0, 0);
+}
+
+
+.vase-pot__container {
+    max-width: 1019px;
+}
+
+.vase-pot__body {}
+
+@media (min-width:1055px) {
+    .vase-pot__body {
+        display        : flex;
+        justify-content: center;
+    }
+}
+
+.roses {}
+
+@media (min-width:577px) {
+    .roses {
+        display: grid;
+        @include adapt-value("grid-gap", 10, 7, 0);
+
+
+        grid-template-columns: 57px 1fr;
+        grid-auto-rows       : auto;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.roses__content {}
+
+@media (min-width:577px) {
+    .roses__content {
+        display              : grid;
+        grid-template-columns: 2.1fr 2.9fr;
+        gap                  : 10px; ///////////////////////////////////////////
+    }
+}
+
+@media (max-width:576px) {
+    .roses__content {
+        @include adapt-value('padding-bottom', 25, 20, 0);
+    }
+}
+
+
+
+
+.roses__body {
+    text-align: center;
+}
+
+.roses__image {
+    width   : 100%;
+    height  : 100%;
+    position: relative;
+    @include adapt-value('min-height', 420, 200, 0);
+
+    @include adapt-value('margin-bottom', 24, 10, 0);
+}
+
+.roses__image img {
+    max-width: 100%;
+}
+
+@media (min-width:577px) {
+    .roses__image img {
+        top       : 0;
+        left      : 0;
+        object-fit: cover;
+        width     : 100%;
+        height    : 100%;
+        position  : absolute;
+    }
+}
+
+.roses {}
+
+.roses__text {
+    font-family: "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
+    @include adapt-value('font-size', 24, 16, 0);
+    line-height: calc(35/24);
+    @include adapt-value('padding-left', 40, 10, 0);
+    @include adapt-value('padding-right', 40, 10, 0);
+}
+
+@media (max-width:576px) {
+    .roses__item:not(:last-child) {
+
+        @include adapt-value('margin-bottom', 25, 20, 0);
+    }
+
+
+}
+
+
+
+
+
+.roses__item_rose {
+    align-self: center;
+    @include adapt-value('padding-top', 21, 10, 0);
+    @include adapt-value('padding-bottom', 21, 10, 0);
+
+
+
+    span {
+        writing-mode    : vertical-rl;
+        text-orientation: upright;
+        font-family     : 'Roboto', "Helvetica Neue", Helvetica, sans-serif;
+        @include adapt-value('font-size', 48, 20, 0);
+        line-height   : calc(55.34/48);
+        letter-spacing: 11px;
+        color         : #7a797a;
+    }
+
+    /*  grid-area: "vases"; */
+}
+
+@media (max-width:576px) {
+    .roses__item_rose {
+        display: none;
+    }
+}
+
+
+.potted-dop_double {
+    margin : 0;
+    @include adapt-value('min-height', 0, 0, 0);
+    @include adapt-value('padding-bottom', 177, 25, 0);
+
+
+}
+
+.potted-dop_double .potted__item_button {}
+
+.potted__item_button {
+    margin: 0;
+    @include adapt-value('padding-top', 115, 25, 0);
 }
