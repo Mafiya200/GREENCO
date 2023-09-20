@@ -414,6 +414,11 @@ width: 100%;
   margin-top: calc(0px + (-285 * ((100vw - 280px) / 1640)));
 }
 
+@media (max-width: 650px) {
+  .potted .potted-dop {
+    display: none;
+  }
+}
 @media (max-width: 767px) {
   .potted-dop {
     min-height: 40px;
@@ -1001,6 +1006,7 @@ width: 100%;
   }
 }
 .roses__content {
+  padding: 5px;
   overflow: hidden;
 }
 
@@ -1034,19 +1040,15 @@ width: 100%;
   margin-bottom: calc(10px + (14 * ((100vw - 280px) / 1640)));
 }
 
-@media (min-width: 577px) {
-  .roses__image:hover {
-    -webkit-transform: translateY(-15px);
-            transform: translateY(-15px);
-    -webkit-box-shadow: 0px 10px 10px 0px hsla(0deg, 0%, 20%, 0.5);
-            box-shadow: 0px 10px 10px 0px hsla(0deg, 0%, 20%, 0.5);
-  }
-}
 .roses__image img {
   max-width: 100%;
 }
 
 @media (min-width: 577px) {
+  .roses__image {
+    min-height: calc(200px + (220 * ((100vw - 280px) / 1640)));
+  }
+
   .roses__image img {
     top: 0;
     left: 0;
@@ -1058,9 +1060,14 @@ width: 100%;
   }
 }
 .roses__item {
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.8s, -webkit-box-shadow 0.4s;
+  transition: -webkit-transform 0.8s, -webkit-box-shadow 0.4s;
+  transition: transform 0.8s, box-shadow 0.4s;
+  transition: transform 0.8s, box-shadow 0.4s, -webkit-transform 0.8s, -webkit-box-shadow 0.4s;
   position: relative;
+  -webkit-box-shadow: 0 0 5px 2px transparent;
+          box-shadow: 0 0 5px 2px transparent;
 }
 
 .roses__content .roses__item:nth-child(odd) {
@@ -1079,12 +1086,19 @@ width: 100%;
           transform: translateX(0vw);
 }
 
+@media (min-width: 577px) {
+  .roses__item:hover {
+    -webkit-box-shadow: 0 0 5px 2px rgba(128, 128, 128, 0.459);
+            box-shadow: 0 0 5px 2px rgba(128, 128, 128, 0.459);
+  }
+}
 .roses__text {
   font-family: "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
   font-size: calc(16px + (8 * ((100vw - 280px) / 1640)));
   line-height: 1.4583333333;
   padding-left: calc(5px + (35 * ((100vw - 280px) / 1640)));
   padding-right: calc(5px + (35 * ((100vw - 280px) / 1640)));
+  padding-bottom: calc(5px + (19 * ((100vw - 280px) / 1640)));
 }
 
 @media (max-width: 576px) {
@@ -1136,6 +1150,11 @@ width: 100%;
   padding-bottom: calc(25px + (152 * ((100vw - 280px) / 1640)));
 }
 
+@media (max-width: 576px) {
+  .potted-dop_double {
+    padding-bottom: calc(25px + (0 * ((100vw - 280px) / 1640)));
+  }
+}
 .potted-dop_double::before {
   content: "";
   position: absolute;
@@ -1166,7 +1185,119 @@ width: 100%;
     display: none;
   }
 }
-.potted__item_button {
+.potted-dop.potted-dop_double .potted__item_button {
   margin: 0;
   padding-top: calc(25px + (90 * ((100vw - 280px) / 1640)));
+}
+
+.rose-open__big {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
+  left: 0%;
+  height: 100%;
+  background-color: hsla(0deg, 0%, 15%, 0.562);
+  -webkit-transition: 0.3s 0s;
+  transition: 0.3s 0s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.rose-open__big._active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rose-open {
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  -webkit-transition: 0.3s 0s;
+  transition: 0.3s 0s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.rose-open._active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rose-open__body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  padding: 50px 10px;
+}
+
+.rose-open__content {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  left: 0%;
+  padding: 20px;
+  padding: calc(20px + (30 * ((100vw - 280px) / 1640)));
+  background-color: #dadada;
+}
+
+.rose-open._active .rose-open__content {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.rose-open__content span {
+  position: absolute;
+  top: calc(1px + (14 * ((100vw - 280px) / 1640)));
+  right : calc(1px + (14 * ((100vw - 280px) / 1640)));
+  cursor: pointer;
+  height: calc(21px + (9 * ((100vw - 280px) / 1640)));
+  width: calc(21px + (9 * ((100vw - 280px) / 1640)));
+}
+
+.rose-open__content span::before,
+.rose-open__content span::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  height: calc(2px + (1 * ((100vw - 280px) / 1640)));
+  width: 100%;
+  background-color: #4A4A4A;
+  top: 50%;
+  left: 50%;
+}
+
+.rose-open__content span::before {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.rose-open__content span::after {
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+          transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.rose-open__body .rose-open__content .roses__image {
+  max-width: 100%;
+  min-height: 100%;
+}
+
+.rose-open__body .rose-open__content .roses__image img {
+  position: relative;
+}
+
+.rose-open__body .rose-open__content .roses__image:hover {
+  -webkit-transform: translate(0);
+          transform: translate(0);
+  -webkit-box-shadow: 0 0 0 0;
+          box-shadow: 0 0 0 0;
 }

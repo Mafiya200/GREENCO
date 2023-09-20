@@ -283,7 +283,6 @@ function openBurger() {
             closeBurger();
         }
     });
-    console.log(window.innerWidth);
     body.style.paddingRight = `${windowScroll}px`;
 
 }
@@ -293,8 +292,110 @@ function closeBurger() {
     body.classList.remove(`_close`);
 
     body.style.paddingRight = `0px`;
+}
+
+
+const roseBigBackground = document.querySelector(`.rose-open__big`);
+
+const rosesContent = document.querySelector(`.roses__content`);
+
+rosesContent.addEventListener(`click`, function (e) {
+
+    const itemRose = e.target.closest(`.roses__item`);
+
+    if (itemRose) {
+        body.style.paddingRight = `${windowScroll}px`;
+
+        body.classList.add(`_close`);
+        const addOpenRose = document.querySelector(`.rose-open`);
+
+        /*         addOpenRose.querySelector(`.rose-open__content`).insertAdjacentHTML(`beforeend`, `${itemRose.innerHTML}`);
+         */
+
+        const bigBlockRose = document.querySelector(`.rose-open`);
+
+
+        
+
+
+
+
+
+
+
+
+        
+
+    }
+
+});
+
+
+
+const allRoses = document.querySelectorAll(`.roses__content .roses__item`);
+
+for (let i = 0; i < allRoses.length; i++) {
+    const roseItem = allRoses[i];
+
+    const roseItemContent = roseItem.querySelector(`.roses__body`).outerHTML;
+
+    roseItem.id = `#rose-${i + 1}`;
+
+    roseBigBackground.insertAdjacentHTML(`beforeend`, `<div id="rose-${i + 1}" class="rose-open">
+    <div class="rose-open__body">
+        <div class="rose-open__content">
+            <span></span>
+                ${roseItemContent}
+            </div>
+    </div>
+    </div>`);
+
+
 
 }
+
+
+
+
+
+
+
+rosesContent.addEventListener(`click`, function (e) {
+
+    if (e.target.closest(`.roses__item`)) {
+        const item = e.target.closest(`.roses__item`);
+        const itemId = item.id.replace(`#`, ``);
+
+        const blockRoseOpen = document.getElementById(itemId);
+
+        blockRoseOpen.classList.add(`_active`);
+        roseBigBackground.classList.add(`_active`);
+        const span = blockRoseOpen.querySelector(`span`);
+
+        span.addEventListener('click', function () {
+            closeBurger();
+            roseBigBackground.classList.remove(`_active`);
+            blockRoseOpen.classList.remove(`_active`);
+
+
+
+        }, { once: true, });
+        blockRoseOpen.addEventListener(`click`, function (e) {
+
+            if (!(e.target.closest(`.rose-open__content`))) {
+                closeBurger();
+
+                roseBigBackground.classList.remove(`_active`);
+
+                blockRoseOpen.classList.remove(`_active`);
+
+
+
+            }
+        });
+    }
+
+});
 
 
 

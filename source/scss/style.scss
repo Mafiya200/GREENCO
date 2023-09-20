@@ -391,6 +391,12 @@ width: 100%;
 
 
 }
+@media (max-width:650px) {
+    .potted .potted-dop{
+    display: none;
+    }    
+}
+
 
 @media (max-width:767px) {
     .potted-dop {
@@ -1074,6 +1080,7 @@ width: 100%;
 
 
 .roses__content {
+    padding: 5px;
     overflow: hidden;
 }
 
@@ -1111,13 +1118,7 @@ width: 100%;
     @include adapt-value('margin-bottom', 24, 10, 0);
 }
 
-@media (min-width:577px) {
-    .roses__image:hover {
-        transform : translateY(-15px);
-        box-shadow: 0px 10px 10px 0px hsla(0, 0%, 20%, 0.5);
-    }
 
-}
 
 .roses__image img {
     max-width: 100%;
@@ -1126,7 +1127,9 @@ width: 100%;
 @media (min-width:577px) {
 
 
-
+    .roses__image {
+        @include adapt-value('min-height', 420, 200, 0);
+        }
 
     .roses__image img {
 
@@ -1146,10 +1149,11 @@ width: 100%;
 .roses {}
 
 .roses__item {
+    cursor: pointer;
 
-    transition: 0.8s;
+    transition: transform 0.8s,box-shadow 0.4s ;
     position  : relative;
-}
+box-shadow: 0 0 5px 2px transparent; }
 
 .roses__content .roses__item:nth-child(odd) {
     transform: translateX(-100vw);
@@ -1164,7 +1168,13 @@ width: 100%;
     transform: translateX(0vw);
 }
 
+@media (min-width:577px) {
+    .roses__item:hover {
+        box-shadow: 0 0 5px 2px rgba(128, 128, 128, 0.459);
 
+    }
+
+}
 
 .roses__text {
     font-family: "Mukta Vaani", "Helvetica Neue", Helvetica, sans-serif;
@@ -1172,6 +1182,9 @@ width: 100%;
     line-height: calc(35/24);
     @include adapt-value('padding-left', 40, 5, 0);
     @include adapt-value('padding-right', 40, 5, 0);
+    @include adapt-value('padding-bottom', 24, 5, 0);
+
+
 }
 
 @media (max-width:576px) {
@@ -1228,23 +1241,27 @@ width: 100%;
     margin: 0;
     @include adapt-value('min-height', 0, 0, 0);
     @include adapt-value('padding-bottom', 177, 25, 0);
-
+}
+@media (max-width:576px) {
+    .potted-dop_double {
+        @include adapt-value('padding-bottom', 25, 25, 0);
+  
+    }
 
 }
 
 
 
 
-
 .potted-dop_double::before {
-    content : "";
-    position: absolute;
+    content   : "";
+    position  : absolute;
     transition: 0.5s 1.2s;
-    transform: translateY(100%);
+    transform : translateY(100%);
 
-    bottom  : 0;
-    z-index : 2;
-    left    : 5%;
+    bottom : 0;
+    z-index: 2;
+    left   : 5%;
     @include adapt-value("height", 278, 139, 0);
     @include adapt-value("width", 303.3, 127.88, 0);
     background: url("../../img/Elements/plant-2.png") 0 0/100% 100% no-repeat;
@@ -1281,9 +1298,140 @@ width: 100%;
 
 
 
-.potted-dop_double .potted__item_button {}
 
-.potted__item_button {
+.potted-dop.potted-dop_double .potted__item_button {
     margin: 0;
     @include adapt-value('padding-top', 115, 25, 0);
+}
+
+
+
+/////dop
+.rose-open__big {
+    position        : fixed;
+    width           : 100%;
+    z-index         : 99;
+    top             : 0;
+    left            : 0%;
+    height          : 100%;
+    background-color: hsla(0, 0%, 15%, 0.562);
+    transition      : 0.3s 0.0s;
+    visibility      : hidden;
+    opacity         : 0;
+
+}
+
+.rose-open__big._active {
+
+    opacity   : 1;
+    visibility: visible;
+}
+
+.rose-open {
+    position  : fixed;
+    width     : 100vw;
+    z-index   : 100;
+    top       : 0%;
+    left      : 0%;
+    height    : 100vh;
+    transition: 0.3s 0.0s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.rose-open._active {
+    opacity   : 1;
+    visibility: visible;
+}
+
+
+.rose-open__body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height    : 100%;
+    padding   : 50px 10px;
+
+}
+
+.rose-open__content {
+    transition: 0.3s;
+   transform: translate(0,-100%);
+    max-width: 800px;
+    margin   : 0 auto;
+    position : relative;
+    left     : 0%;
+    padding  : 20px;
+    @include adapt-value('padding', 50, 20, 0);
+    background-color: #dadada;
+
+}
+.rose-open._active .rose-open__content{
+    transform: translate(0,0);
+}
+.rose-open__content span {
+    position: absolute;
+
+    @include adapt-value('top', 15, 1, 0);
+    @include adapt-value('right ', 15, 1, 0);
+    cursor: pointer;
+    @include adapt-value('height', 30, 21, 0);
+    @include adapt-value('width', 30, 21, 0);
+}
+
+
+
+.rose-open__content span::before,
+.rose-open__content span::after {
+    content : '';
+    position: absolute;
+    height  : 4px;
+    @include adapt-value('height', 3, 2, 0);
+
+    width           : 100%;
+    background-color: #4A4A4A;
+    top             : 50%;
+    left            : 50%;
+
+
+}
+
+.rose-open__content span::before {
+    top      : 50%;
+    left     : 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+}
+
+.rose-open__content span::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+}
+
+@media (max-width:576px) {
+    .rose-open__content span {}
+
+    .rose-open__content span::before,
+    .rose-open__content span::after {}
+
+    .rose-open__content span::before {}
+
+    .rose-open__content span::after {}
+}
+
+.rose-open__body .rose-open__content {}
+
+
+
+.rose-open__body .rose-open__content .roses__image {
+    max-width : 100%;
+    min-height: 100%;
+}
+
+.rose-open__body .rose-open__content .roses__image img {
+    position: relative;
+}
+
+.rose-open__body .rose-open__content .roses__image:hover {
+    transform : translate(0);
+    box-shadow: 0 0 0 0;
 }
