@@ -1235,10 +1235,10 @@ width: 100%;
 }
 
 .rose-open__content {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  -webkit-transform: translate(0, -100%);
-          transform: translate(0, -100%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform: perspective(600px) translate(0, -100%) rotateX(45deg);
+          transform: perspective(600px) translate(0, -100%) rotateX(45deg);
   max-width: 800px;
   margin: 0 auto;
   position: relative;
@@ -1249,8 +1249,8 @@ width: 100%;
 }
 
 .rose-open._active .rose-open__content {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+  -webkit-transform: perspective(600px) translate(0, 0%) rotateX(0deg);
+          transform: perspective(600px) translate(0, 0%) rotateX(0deg);
 }
 
 .rose-open__content span {

@@ -1354,8 +1354,8 @@ box-shadow: 0 0 5px 2px transparent; }
 }
 
 .rose-open__content {
-    transition: 0.3s;
-   transform: translate(0,-100%);
+    transition: 0.5s;
+   transform: perspective(600px) translate(0,-100%) rotateX(45deg);
     max-width: 800px;
     margin   : 0 auto;
     position : relative;
@@ -1366,7 +1366,7 @@ box-shadow: 0 0 5px 2px transparent; }
 
 }
 .rose-open._active .rose-open__content{
-    transform: translate(0,0);
+    transform: perspective(600px) translate(0,0%) rotateX(0deg);
 }
 .rose-open__content span {
     position: absolute;
