@@ -1239,7 +1239,7 @@ width: 100%;
 .potted-dop_double::before {
     content : "";
     position: absolute;
-    transition: 0.5s;
+    transition: 0.5s 1.2s;
     transform: translateY(100%);
 
     bottom  : 0;
